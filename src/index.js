@@ -6,6 +6,8 @@ import {crearTodoHtml} from "./js/componentes";
 export const todoList = new TodoList();
 const $input = document.querySelector('input');
 
+todoList.todos.forEach(todo => crearTodoHtml(todo))
+
 $input.addEventListener('keyup', (event) => {
     if (event.code === 'Enter' && $input.value.length > 0) {
 
