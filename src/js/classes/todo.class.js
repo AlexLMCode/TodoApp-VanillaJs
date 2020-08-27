@@ -6,4 +6,8 @@ export class Todo {
     this.completado = false;
     this.creado = new Date();
   }
+
+  imprimirTarea () {
+    console.log(`Mi tarea es: ${this.tarea}`)
+  }
 }

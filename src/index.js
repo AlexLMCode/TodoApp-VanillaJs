@@ -1,20 +1,21 @@
 import './styles.css'
 import {TodoList} from "./js/classes/todo-list.class";
-import {Todo} from "./js/classes/todo.class";
-import {crearTodoHtml} from "./js/componentes";
+import {eliminarSeleccionados, todoClick, validateInput} from "./js/main";
 
 export const todoList = new TodoList();
-const $input = document.querySelector('input');
 
-todoList.todos.forEach(todo => crearTodoHtml(todo))
+export const $input = document.querySelector('input');
+export const $todoList = document.querySelector('ul');
+export const $btnBorrar = document.querySelector('.clear-completed');
 
 $input.addEventListener('keyup', (event) => {
-    if (event.code === 'Enter' && $input.value.length > 0) {
-
-        const nuevoTodo = new Todo($input.value);
-        todoList.nuevoTodo(nuevoTodo);
-        crearTodoHtml(nuevoTodo);
-        $input.value = '';
-
-    }
+    validateInput(event);
 });
+
+$todoList.addEventListener('click', (event) => {
+    todoClick(event)
+})
+
+$btnBorrar.addEventListener('click', () => {
+    eliminarSeleccionados();
+})
