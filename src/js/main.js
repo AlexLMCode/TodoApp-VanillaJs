@@ -1,22 +1,21 @@
 //html refs
 import {todoList} from "../index";
-import {Todo} from "./classes/todo.class";
-import {crearTodoHtml} from "./classes/createHtml";
 import {$input, $todoList} from "../index";
+import {crearTodoHtml} from "./classes/createHtml";
+import {Todo} from "./classes/todo.class";
 
 //Functions
 
 export const validateInput = (event) => {
     if (event.code === 'Enter' && $input.value.length > 0) {
-
+        console.log($input.value)
         const nuevoTodo = new Todo($input.value);
 
         todoList.nuevoTodo(nuevoTodo);
 
-        const $listItem = document.createElement('div');
-        $listItem.innerHTML = crearTodoHtml(nuevoTodo);
-        $todoList.append($listItem.firstElementChild);
+        const $listItem = crearTodoHtml(nuevoTodo);
 
+        $todoList.append($listItem);
         $input.value = '';
     }
 };

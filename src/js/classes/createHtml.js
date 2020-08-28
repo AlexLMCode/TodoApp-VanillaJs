@@ -1,6 +1,7 @@
+
 export const crearTodoHtml = (todo) => {
 
-    return `
+    let htmlTemplate =  `
     <li class="${(todo.completado) ? 'completed' : ''}" data-id="${todo.id}">
       <div class="view">
         <input class="toggle" type="checkbox" ${(todo.completado) ? 'checked' : ''}>
@@ -10,4 +11,9 @@ export const crearTodoHtml = (todo) => {
       <input class="edit" value="Create a TodoMVC template">
     </li>
   `;
-}
+
+    const $listItem = document.createElement('div');
+    $listItem.innerHTML = htmlTemplate;
+
+    return $listItem.firstElementChild;
+};
